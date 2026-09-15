@@ -49,4 +49,4 @@ The parent passes props to the child. The child calls a function passed by the p
 
 ## Learning Note
 
-I built this project while learning React, with AI help for code, explanations, and debugging.
+I built this project while learning React, with AI help for explanations, and debugging.
