@@ -19,11 +19,7 @@ type TechnologyCardProps = {
   onAdd: (technology: Technology) => void;
 };
 
-function TechnologyCard({
-  technology,
-  isAdded,
-  onAdd,
-}: TechnologyCardProps) {
+function TechnologyCard({ technology, isAdded, onAdd }: TechnologyCardProps) {
   return (
     <article className="flex h-full min-w-0 flex-col rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
       <div className="flex items-center justify-between gap-2">
@@ -32,33 +28,26 @@ function TechnologyCard({
           alt=""
           className="h-7 w-7 object-contain"
         />
-
         <span className="rounded-full bg-sky-50 px-2 py-1 text-xs text-sky-600">
           {technology.badge}
         </span>
       </div>
-
       <h3 className="mt-5 text-lg font-bold text-slate-900">
         {technology.name}
       </h3>
-
       <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-500">
         {technology.description}
       </p>
-
       <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-slate-50 pt-3 text-xs text-slate-500">
         <span className="rounded bg-slate-100 px-2 py-1">
           {technology.category}
         </span>
-
         <span>{technology.difficulty}</span>
-
         <span
           className="ml-auto whitespace-nowrap"
           aria-label={`Rating ${technology.rating} out of 5`}
         >
-          <span className="text-amber-400">★</span>{" "}
-          {technology.rating}
+          <span className="text-amber-400">★</span> {technology.rating}
         </span>
       </div>
 
@@ -86,53 +75,34 @@ export default function Technologies() {
     async function loadTechnologies() {
       try {
         const response = await fetch("/technologies.json");
-
         if (!response.ok) {
           throw new Error("The technology file could not be loaded.");
         }
-
         const data: Technology[] = await response.json();
-
-        if (active) {
-          setTechnologies(data);
-        }
+        if (active) setTechnologies(data);
       } catch {
-        if (active) {
-          setError("Could not load technologies. Please refresh to try again.");
-        }
+        if (active) setError("Could not load technologies. Please refresh to try again.");
       } finally {
-        if (active) {
-          setLoading(false);
-        }
+        if (active) setLoading(false);
       }
     }
 
     loadTechnologies();
-
-    return () => {
-      active = false;
-    };
+    return () => { active = false; };
   }, []);
 
   function addToStack(technology: Technology) {
-    const alreadyAdded = stack.some(
-      (item) => item.id === technology.id
-    );
-
+    const alreadyAdded = stack.some((item) => item.id === technology.id);
     if (alreadyAdded) {
       toast.warn("This technology is already in your stack.");
       return;
     }
-
     setStack((previous) => [...previous, technology]);
     toast.success(`${technology.name} added to your stack.`);
   }
 
   function removeFromStack(technology: Technology) {
-    setStack((previous) =>
-      previous.filter((item) => item.id !== technology.id)
-    );
-
+    setStack((previous) => previous.filter((item) => item.id !== technology.id));
     toast.info(`${technology.name} removed from your stack.`);
   }
 
@@ -146,17 +116,10 @@ export default function Technologies() {
       id="technologies"
       className="mx-auto max-w-6xl scroll-mt-24 px-6 py-16"
     >
-      <ToastContainer
-        position="top-right"
-        autoClose={2500}
-        limit={3}
-      />
-
+      <ToastContainer position="top-right" autoClose={2500} limit={3} />
       <h2 className="text-3xl font-bold tracking-tight text-slate-900">
-        Explore the{" "}
-        <span className="brand-text">Technologies</span>
+        Explore the <span className="brand-text">Technologies</span>
       </h2>
-
       <p className="mt-3 text-sm text-slate-500">
         Explore your options and build your ideal development stack.
       </p>
@@ -177,9 +140,7 @@ export default function Technologies() {
                 <TechnologyCard
                   key={technology.id}
                   technology={technology}
-                  isAdded={stack.some(
-                    (item) => item.id === technology.id
-                  )}
+                  isAdded={stack.some((item) => item.id === technology.id)}
                   onAdd={addToStack}
                 />
               ))}
@@ -189,17 +150,11 @@ export default function Technologies() {
 
         <aside className="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 lg:sticky lg:top-24">
           <h3 className="font-bold text-slate-900">Your Stack</h3>
-
-          <p
-            aria-live="polite"
-            className="mt-1 text-xs text-slate-400"
-          >
+          <p aria-live="polite" className="mt-1 text-xs text-slate-400">
             {stack.length === 0
               ? "No technologies selected yet."
-              : `${stack.length} ${stack.length === 1 ? "technology" : "technologies"
-              } selected`}
+              : `${stack.length} ${stack.length === 1 ? "technology" : "technologies"} selected`}
           </p>
-
           {stack.length === 0 ? (
             <p className="mt-5 rounded-xl border border-dashed border-slate-200 px-3 py-8 text-center text-sm text-slate-400">
               Your stack is empty.
@@ -217,16 +172,12 @@ export default function Technologies() {
                       alt=""
                       className="h-6 w-6 shrink-0 object-contain"
                     />
-
                     <div className="min-w-0 flex-1">
                       <p className="text-xs font-semibold text-slate-900">
                         {item.name}
                       </p>
-                      <p className="text-xs text-slate-400">
-                        {item.category}
-                      </p>
+                      <p className="text-xs text-slate-400">{item.category}</p>
                     </div>
-
                     <button
                       type="button"
                       onClick={() => removeFromStack(item)}
@@ -238,7 +189,6 @@ export default function Technologies() {
                   </div>
                 ))}
               </div>
-
               <button
                 type="button"
                 onClick={removeAll}

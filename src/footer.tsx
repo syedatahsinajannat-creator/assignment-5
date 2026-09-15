@@ -8,16 +8,14 @@ export default function Footer() {
                             Dev Stack
                         </h2>
                         <p className="mt-3">
-                            Tools and technologies for building modern software.
+                            All the tools and tech you need for building modern software.
                         </p>
-
                         <div className="mt-4 flex gap-4">
                             <a href="https://github.com">GitHub</a>
                             <a href="https://twitter.com">Twitter</a>
                             <a href="https://linkedin.com">LinkedIn</a>
                         </div>
                     </div>
-
                     <div>
                         <h3 className="font-semibold">Product</h3>
                         <div className="mt-3 flex flex-col gap-2">
@@ -26,7 +24,6 @@ export default function Footer() {
                             <a href="#projects">Projects</a>
                         </div>
                     </div>
-
                     <div>
                         <h3 className="font-semibold">Company</h3>
                         <div className="mt-3 flex flex-col gap-2">
@@ -35,7 +32,6 @@ export default function Footer() {
                             <a href="#careers">Careers</a>
                         </div>
                     </div>
-
                     <div>
                         <h3 className="font-semibold">Legal</h3>
                         <div className="mt-3 flex flex-col gap-2">
@@ -44,7 +40,6 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-
                 <div className="mt-8 flex flex-wrap justify-between gap-4 border-t border-slate-100 pt-6">
                     <p>© 2026 Dev Stack. All rights reserved.</p>
                     <div className="flex gap-4">
