@@ -19,7 +19,7 @@ function App() {
                         ☰
                     </button>
 
-                    <a href = "#home" className = "flex shrink-0 items-center gap-2">
+                    <a href = "#home" className = "flex shrink-0 items-center gap-2 scroll-mt-24">
                         <span className = "brand-gradient flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold text-white">
                             DS
                         </span>
