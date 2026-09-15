@@ -74,7 +74,7 @@ export default function Technologies() {
 
     async function loadTechnologies() {
       try {
-        const response = await fetch("/technologies.json");
+        const response = await fetch(`${import.meta.env.BASE_URL}technologies.json`);
         if (!response.ok) {
           throw new Error("The technology file could not be loaded.");
         }
